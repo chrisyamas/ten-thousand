@@ -13,7 +13,8 @@
 
 ### How to initialize/run your application (where applicable)
 
-- We initialize our application by running pytest. User must have a .venv and pytest installed.
+- We run our tests for our application with `pytest` command in terminal while in directory. User must have a .venv and pytest installed.
+- We run our game application with `python -m ten_thousand.game` command in terminal while in directory. User must have a .venv installed.
 
 ### Tests
 
