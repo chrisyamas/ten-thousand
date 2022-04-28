@@ -20,6 +20,8 @@ class Game:
 
         num_round = 0
         amount_banked = 0
+        num_left = 6
+        new_round = True
 
         print("Welcome to Ten Thousand")
         print("(y)es to play or (n)o to decline")
@@ -30,11 +32,14 @@ class Game:
             print("OK. Maybe another time")
         else:
             while True:
-                num_round += 1
+
+                if new_round:
+                    num_round += 1
+                
                 response_valid = False
                 print(f"Starting round {num_round}")
-                print("Rolling 6 dice...")
-                roll = roller(6)
+                print(f"Rolling {num_left} dice...")
+                roll = roller(num_left)
                 roll_string = ' '.join(map(str, (roll)))
 
                 print(f"*** {roll_string} ***")
@@ -48,13 +53,16 @@ class Game:
                     print("****************************************")
                     print("You banked 0 points in round 1")
                     print("Total score is 0 points")
-                else:
-                    print("nice")
         
-                
+                attempt_num = 0
                 while response_valid == False:
-                    print("Enter dice to keep, or (q)uit:")
-                    print(f"*** {roll_string} ***")
+                    
+                    if attempt_num >= 1:
+                        print("Cheater!!! Or possibly made a typo...")
+                        print("Enter dice to keep, or (q)uit:")
+                        print(f"*** {roll_string} ***")
+                    else:
+                        print("Enter dice to keep, or (q)uit:")
                     response = input("> ")
 
                     if response == "q":
@@ -66,9 +74,10 @@ class Game:
                         response_list = [int(x) for x in response if x.isdigit()]
                         keepers = tuple(response_list)
                         response_valid = validator(roll, keepers)
-                        print("Cheater!!! Or possibly made a typo...")
 
-                num_left = 6 - len(response)
+                        attempt_num += 1
+
+                num_left = 6 - len(response_list)
                 kept_dice = tuple(map(int, response))
                 roll_score = scorer(kept_dice)
                 print(f"You have {roll_score} unbanked points and {num_left} dice remaining")
@@ -85,9 +94,11 @@ class Game:
                     print(f"You banked {roll_score} points in round {num_round}")
                     roll_score -= roll_score
                     print(f"Total score is {amount_banked} points")
+                    new_round = True
                     continue
 
                 elif response == "r":
+                    new_round = False
                     continue
 
 
