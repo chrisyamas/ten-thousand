@@ -8,6 +8,46 @@ class GameLogic:
         pass
 
     number_of = 0
+    
+    @staticmethod
+    def validate_keepers(roll, keepers):
+        verify_list = [x for x in roll]
+        response_list = [x for x in keepers]
+
+
+        list_length = len(response_list)
+        index_count = 0
+        for i in response_list:
+            count_response = response_list.count(i)
+            count_verify = verify_list.count(i)
+            index_count += 1
+            if count_response > count_verify:
+                return False
+            elif index_count == list_length:
+                return True
+            else:
+                continue
+        
+        
+        
+        
+        
+        
+        
+        # verify_list = [x for x in roller_result]
+        # response_list = [int(x) for x in response if x.isdigit()]
+
+
+        # for i in response_list:
+        #     count_response = response_list.count(i)
+        #     count_verify = verify_list.count(i)
+        #     if count_response > count_verify:
+        #         print("Cheater!!! Or possibly made a typo...")
+        #         break    
+        #     else:
+        #         continue
+        
+
 
     @staticmethod
     def roll_dice(num):
