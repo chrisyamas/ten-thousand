@@ -50,9 +50,9 @@ class GameLogic:
 
 
     @staticmethod
-    def roll_dice(num):
+    def roll_dice(num=6):
         rolls_list = []
-        for i in range(num):
+        for _ in range(num):
             rolls_list.append(random.randint(1, 6))
         return tuple(rolls_list)
 
@@ -100,27 +100,38 @@ class GameLogic:
                     user_score += (occurrence - 2) * default_unit
 
         return user_score
-
-
+    
+    @staticmethod
+    def get_scorers(roll):
+        roll_list = []
+        for die in roll:
+            if die == 1 or die == 5:
+                roll_list.append(die)
+        return tuple(roll_list)
+        
 class Banker:
-    def __init__(self):
-        self.balance = 0
-        self.shelved = 0
+        def __init__(self):
+            self.balance = 0
+            self.shelved = 0
 
     # when you roll the dice, you want to keep these numbers
-    def shelf(self, number):
-        self.shelved += number
-        return self.shelved
+        def shelf(self, number):
+            self.shelved += number
+            return self.shelved
 
     # add points on the shelf to the total and reset
 
-    def bank(self):
-        self.balance += self.shelved
-        self.shelved = 0
-        return self.balance
+        def bank(self):
+            deposit_points = self.shelved
+            self.balance += self.shelved
+            self.shelved = 0
+            return deposit_points
 
     # remove all un-banked points
 
-    def clear_shelf(self):
-        self.shelved = 0
-        return self.shelved
+        def clear_shelf(self):
+            self.shelved = 0
+            return self.shelved
+
+
+
