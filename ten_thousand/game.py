@@ -4,12 +4,14 @@ import sys
 
 class Game:
 
-    def __init__(self):
+    def __init__(self, num_rounds=4):
         self.bank = Banker()
         self.num_round = 0
         self.num_left = 6
         self.score = 0
         self.response = ""
+        self.num_rounds = num_rounds
+        self.num_games = None
 
     def welcome_message(self):
         print("Welcome to Ten Thousand")
