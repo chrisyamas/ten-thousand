@@ -1,4 +1,4 @@
-# LAB - Class 06, Class 07, Class 08
+# LAB - Class 06, 07, 08, and 09
 
 ## Project: Ten Thousand Game
 
