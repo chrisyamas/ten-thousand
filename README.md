@@ -1,8 +1,8 @@
-# LAB - Class 06, Class 07
+# LAB - Class 06, Class 07, Class 08
 
 ## Project: Ten Thousand Game
 
-- This is a version of the game Ten Thousand. Today we tackled keeping track of the score, rolling the dice, and banking of points.
+- This is a version of the game Ten Thousand. Today we tackled keeping track of the score, rolling the dice, and banking of points. We have refactored our code to include our Banker class and broke our play method into smaller method so we no longer had everything in a massive while loop.
 
 ### Author: Ella Svete & Christopher Yamas
 
