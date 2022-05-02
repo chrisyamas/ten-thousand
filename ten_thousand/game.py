@@ -54,22 +54,26 @@ class Game:
                     return kept_dice
 
            
-
-    def print_roll(self, roll):
+    @staticmethod
+    def print_roll(roll):
         roll_string = ' '.join(map(str, (roll)))
         print(f"*** {roll_string} ***")
 
 
 
-    def play(self, 
+    def play(self, num_games=1,
     roller=GameLogic.roll_dice, 
     scorer=GameLogic.calculate_score,
     validator=GameLogic.validate_keepers):
+        self.num_games = num_games
         if self.num_round == 0 and self.bank.shelved == 0:
             self.response = self.welcome_message()
         if self.response == "y":
            
             while True:
+                if self.num_round == self.num_rounds:
+                    print(f"Thanks for playing. You earned {self.bank.balance} points")
+                    sys.exit()
                 if not self.bank.shelved: # conditional off of shelving dice 
                     self.num_round += 1   # it won't increment if dice shelved
                     print(f"Starting round {self.num_round}") # print statement that is repeating
