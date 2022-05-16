@@ -27,26 +27,6 @@ class GameLogic:
                 return True
             else:
                 continue
-        
-        
-        
-        
-        
-        
-        
-        # verify_list = [x for x in roller_result]
-        # response_list = [int(x) for x in response if x.isdigit()]
-
-
-        # for i in response_list:
-        #     count_response = response_list.count(i)
-        #     count_verify = verify_list.count(i)
-        #     if count_response > count_verify:
-        #         print("Cheater!!! Or possibly made a typo...")
-        #         break    
-        #     else:
-        #         continue
-        
 
 
     @staticmethod
@@ -108,7 +88,9 @@ class GameLogic:
             if die == 1 or die == 5:
                 roll_list.append(die)
         return tuple(roll_list)
-        
+
+
+
 class Banker:
         def __init__(self):
             self.balance = 0
